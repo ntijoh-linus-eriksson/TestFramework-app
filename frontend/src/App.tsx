@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
+import { Button, TextField } from "@mui/material"
+import "./App.css"
+import { useState } from "react"
+export const App = () => {
+  const initialUser = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: ""
+}
+  const [users, setUsers] = useState([initialUser])
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("")
+  const submithandler = (e: any) => {
+    e.preventDefault()
+    const user = {firstName, lastName, email, password}
+    setUsers([...users, user])
+    setFirstName("")
+    setLastName("")
+    setEmail("")
+    setPassword("")
+  }
+ return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="Login">
+        <div className="Container">
+            <h1>Login</h1>
+            <form onSubmit={(e) => submithandler(e)}>
+                <TextField className="firstName" label="First Name" variant="outlined" onChange={(e) => setFirstName(e.target.value)} value={firstName}/>
+                <TextField className="lastName" label="Last Name" variant="outlined" onChange={(e) => setLastName(e.target.value)} value={lastName}/>
+                <TextField className="email" label="Email" variant="outlined"  onChange={(e) => setEmail(e.target.value)} value={email}/>
+                <TextField className="password" label="Password" variant="outlined" onChange={(e) => setPassword(e.target.value)} value={password}/>
+                <p/>
+                <Button variant="contained" size="large" onClick={(e) => submithandler(e)}>
+                  Submit
+                </Button>
+            </form>
+          </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
-
-export default App
