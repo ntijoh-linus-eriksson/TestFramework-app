@@ -1,0 +1,6 @@
+.navbar {
+    position: fixed;
+    background-color: brown;
+    height: 75px;
+    width: 100%
+}
