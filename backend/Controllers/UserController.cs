@@ -51,6 +51,7 @@ namespace backend.Controllers
         {
             if (id != user.id)
             {
+                Console.WriteLine("Här är något", id);
                 return BadRequest();
             }
 
