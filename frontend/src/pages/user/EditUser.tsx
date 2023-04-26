@@ -6,13 +6,14 @@ import { PUTUser } from "../../api/EditUser"
 export const EditUser = () => {
   const location = useLocation();
   const saved = location.state
+  const [id, setId] = useState(saved.id)
   const [firstName, setFirstName] = useState(saved.firstName ?? "");
   const [lastName, setLastName] = useState(saved.lastName ?? "");
   const [email, setEmail] = useState(saved.email ?? "");
   const [password, setPassword] = useState(saved.password ?? "")
   const submithandler = (e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    const user = {firstName, lastName, email, password,}
+    const user = {id, firstName, lastName, email, password,}
     console.log(user)
     PUTUser(user, saved.id)
   }

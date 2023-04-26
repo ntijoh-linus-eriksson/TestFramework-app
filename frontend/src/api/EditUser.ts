@@ -1,5 +1,6 @@
 import axios from "axios";
-export interface User {
+export interface PutUser {
+  id: number;
   firstName: string;
   lastName: string;
   email: string;
@@ -7,7 +8,7 @@ export interface User {
 }
 const baseUrl = "http://localhost:5265/api";
 
-export async function PUTUser(data: User, id: number) {
+export async function PUTUser(data: PutUser, id: number) {
   const { data: response } = await axios.put(`${baseUrl}/User/${id}`, data);
   console.log(response.data);
 }

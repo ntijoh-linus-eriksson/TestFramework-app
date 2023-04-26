@@ -49,11 +49,13 @@ namespace backend.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(long id, User user)
         {
-            if (id != user.id)
-            {
-                Console.WriteLine("Här är något", id);
-                return BadRequest();
-            }
+            // if (id != user.id)
+            // {
+            //     Console.WriteLine("Här är något", id);
+            //     return BadRequest();
+            // }
+
+            Console.WriteLine($"Här är något {id}");
 
             _context.Entry(user).State = EntityState.Modified;
 
