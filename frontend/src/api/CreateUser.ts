@@ -1,5 +1,5 @@
 import axios from "axios";
-interface User {
+export interface User {
   firstName: string;
   lastName: string;
   email: string;

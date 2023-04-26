@@ -15,3 +15,13 @@
     left: 50%;
     margin: -130px 0 0 -200px;
 }
+
+.cardContainer {
+    display: flex;
+    gap: 10px
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+}

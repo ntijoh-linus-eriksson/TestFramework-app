@@ -1,47 +1,39 @@
-import { Button, TextField } from "@mui/material"
+import { Button, Card } from "@mui/material"
+import {User} from "../api/CreateUser.ts"
+import { FetchUsers } from "../api/FetchUser"
 import "./User.css"
-import { useState } from "react"
-import { PostUser } from "../api/user-api/CreateUser"
+import { useEffect, useState } from "react"
+import DeleteIcon from '@mui/icons-material/Delete';
+import { SettingsSuggest } from "@mui/icons-material"
 export const ShowUsers = () => {
-  const initialUser = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: ""
-}
-  const [users, setUsers] = useState([initialUser])
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("")
-  const submithandler = (e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault()
-    const user = {firstName, lastName, email, password}
-    setUsers([...users, user])
-    setFirstName("")
-    setLastName("")
-    setEmail("")
-    setPassword("")
-    PostUser(user)
-  }
-  
+  const [users, setUsers] = useState<User[]>([])
+  const data: User[] = FetchUsers()
+  useEffect(() => {
+    if(data) {
+      return setUsers(data)
+    } else {
+      return setUsers([])
+    }
+    
+    
+    },[data])
+    
  return (
-    <>
-      <div className="Login">
-        <div className="Container">
-            <h1>Create User</h1>
-            <form onSubmit={(e) => submithandler(e)}>
-                <TextField className="firstName" label="First Name" variant="outlined" onChange={(e) => setFirstName(e.target.value)} value={firstName}/>
-                <TextField className="lastName" label="Last Name" variant="outlined" onChange={(e) => setLastName(e.target.value)} value={lastName}/>
-                <TextField className="email" label="Email" variant="outlined"  onChange={(e) => setEmail(e.target.value)} value={email}/>
-                <TextField className="password" label="Password" variant="outlined" onChange={(e) => setPassword(e.target.value)} value={password}/>
-                <p/>
-                <Button variant="contained" size="large" onClick={(e) => submithandler(e)}>
-                  Submit
-                </Button>
-            </form>
+    <div className="cardContainer">
+      {users.map((user, index) => (
+        <Card
+         key={index} variant="outlined"
+         sx={{ width: 345 }}
+         >
+          <div className="buttonContainer">
+            <Button variant="contained" startIcon={<SettingsSuggest/>}>Edit</Button>
           </div>
-      </div>
-    </>
+          <h1>First Name: {user.firstName}</h1>
+          <h2>Last Name: {user.lastName}</h2>
+          <h2>Email: {user.email}</h2>
+          <Button variant="contained" color="error" startIcon={<DeleteIcon />}>Delete</Button>
+        </Card>
+      ))}
+    </div>
   )
 }

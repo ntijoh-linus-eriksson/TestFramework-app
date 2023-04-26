@@ -1,7 +1,7 @@
 import { Button, TextField } from "@mui/material"
 import "./User.css"
 import { useState } from "react"
-import { PostUser } from "../api/user-api/CreateUser"
+import { PostUser } from "../api/CreateUser"
 export const RegisterUser = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
