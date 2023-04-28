@@ -28,15 +28,13 @@ export const ShowUsers = () => {
       return setUsers(data)
     } else {
       return setUsers([])
-    }
-    
-    
-    },[data])
+    }},[data])
     
  return (
     <div className="cardContainer">
       {users.map((user, index) => (
         <Card
+        className="card"
          key={index} variant="outlined"
          sx={{ width: 345 }}
          >

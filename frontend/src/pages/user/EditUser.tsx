@@ -6,6 +6,7 @@ import { PUTUser } from "../../api/EditUser"
 export const EditUser = () => {
   const location = useLocation();
   const saved = location.state
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [id, setId] = useState(saved.id)
   const [firstName, setFirstName] = useState(saved.firstName ?? "");
   const [lastName, setLastName] = useState(saved.lastName ?? "");
@@ -15,7 +16,7 @@ export const EditUser = () => {
     e.preventDefault()
     const user = {id, firstName, lastName, email, password,}
     console.log(user)
-    PUTUser(user, saved.id)
+    PUTUser(user, saved.id) 
   }
   
  return (
