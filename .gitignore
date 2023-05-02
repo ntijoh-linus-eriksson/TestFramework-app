@@ -27,6 +27,6 @@ package-lock.json
 *.njsproj
 *.sln
 *.sw?
-tests/test-results
-tests/playwright-report
-tests/test-results
+/test-results
+/playwright-report
+/playwright/.cache/
