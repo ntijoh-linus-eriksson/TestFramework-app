@@ -6,7 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { SettingsSuggest } from "@mui/icons-material"
 import { DeleteUser } from "../../api/DeleteUser.ts"
 import { useNavigate } from "react-router-dom"
-
+import React from "react"
 export interface ShowUser {
     id: number;
     firstName: string;
@@ -61,7 +61,9 @@ export const ShowUsers = () => {
               onClick={() => removeUserFromList(user.id)}
               >Delete</Button>
         </Card>
-      ))}
+
+      )
+      )}
     </div>
   )
 }

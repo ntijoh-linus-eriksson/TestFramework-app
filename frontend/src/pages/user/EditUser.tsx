@@ -3,6 +3,8 @@ import "./User.css"
 import { useState } from "react"
 import { useLocation } from "react-router-dom"
 import { PUTUser } from "../../api/EditUser"
+import React from "react"
+
 export const EditUser = () => {
   const location = useLocation();
   const saved = location.state
