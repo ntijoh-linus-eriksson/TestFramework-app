@@ -4,6 +4,7 @@ import { RegisterUser } from "./pages/user/RegisterUser"
 import { ShowUsers } from "./pages/user/ShowUsers"
 import { Home } from "./pages/Home"
 import { EditUser } from "./pages/user/EditUser"
+import React from "react"
 export const App = () => {
   const queryClient = new QueryClient()
  return (
