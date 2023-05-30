@@ -35,7 +35,8 @@ export const ShowUsers = () => {
       {users.map((user, index) => (
         <Card
         className="card"
-         key={index} variant="outlined"
+         key={index} 
+         variant="outlined"
          sx={{ width: 345 }}
          >
           <div className="buttonContainer">
